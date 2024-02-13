@@ -1,4 +1,5 @@
 ﻿using Class03;
+using System.Text;
 
 class Program
 {
@@ -9,18 +10,18 @@ class Program
 
     static void Main(string[] args)
 	{
-        //#region 숫자 맞추기
-        //// 게임 로딩 및 타이틀 구현
-        //Loading();
+        #region 숫자 맞추기
+        // 게임 로딩 및 타이틀 구현
+        Loading();
 
-        //// 게임 로직 구현 해야할 기능 : 게임 승리, 게임 오버, 게임 재시작
-        //GameLogic();
-        //#endregion
-
-        #region 클래스 버전
-        GuessNumberClass guessingGame = new GuessNumberClass(1, 100, 10);
-        guessingGame.GameStart();
+        // 게임 로직 구현 해야할 기능 : 게임 승리, 게임 오버, 게임 재시작
+        GameLogic();
         #endregion
+
+        //#region 클래스 버전
+        //GuessNumberClass guessingGame = new GuessNumberClass(1, 100, 10);
+        //guessingGame.GameStart();
+        //#endregion
     }
 
     private static void GameLogic()
@@ -135,30 +136,33 @@ class Program
         Console.WriteLine("Press Any Key");
         Console.ReadKey();
 
-        string title = "";
+        StringBuilder sb= new StringBuilder();
+
+        //string title = "";
 
         for (int i = 0; i < 47; i++)
         {
-            title += "*";
+            sb.Append("*");
         }
-        title += "\n";
-        title += "**      Guess the Number Game Loading      **\n";
+        sb.Append("\n");
+        //title += "\n";
+        sb.Append("**      Guess the Number Game Loading      **\n");
         for (int i = 0; i < 47; i++)
         {
-            title += "*";
+            sb.Append("*");
         }
 
         // 타이틀 애니메이션 예시
         int frames = 48;
 
+        string tempTitle = null;
+
         for (int i = 0; i < frames; i++)
         {
             Console.Clear();
 
-            title = title.Substring(1);
-
-            Console.WriteLine(title);
-
+            tempTitle = tempTitle.Substring(1);
+            Console.WriteLine(tempTitle);
             Thread.Sleep(50);
         }
 
